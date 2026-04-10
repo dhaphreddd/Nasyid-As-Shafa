@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors - White & Gold Theme (Light Mode) -->
+    <color name="black_primary">#FFFFFF</color>
+    <color name="black_primary_dark">#F5F5F5</color>
+    <color name="black_primary_light">#FAFAFA</color>
+    <color name="gold_accent">#FFD700</color>
+    <color name="gold_accent_dark">#FFC700</color>
+    <color name="gold_accent_light">#FFE44D</color>
+    
+    <!-- Secondary Colors -->
+    <color name="gold_secondary">#FFA500</color>
+    <color name="gold_secondary_dark">#FF8C00</color>
+    <color name="gold_secondary_light">#FFB84D</color>
+    
+    <!-- Neutral Colors -->
+    <color name="dark_background">#FFFFFF</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="surface_dark">#F5F5F5</color>
+    <color name="light_gray">#F5F5F5</color>
+    <color name="medium_gray">#757575</color>
+    <color name="dark_gray">#424242</color>
+    
+    <!-- Status Colors -->
+    <color name="error">#F44336</color>
+    <color name="warning">#FF9800</color>
+    <color name="success">#4CAF50</color>
+    <color name="info">#2196F3</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_on_primary">#212121</color>
+    <color name="text_hint">#BDBDBD</color>
+    <color name="text_gold">#FFD700</color>
+    
+    <!-- Surface Colors -->
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#F5F5F5</color>
+    <color name="outline">#E0E0E0</color>
+    
+    <!-- Special Colors -->
+    <color name="gold_transparent">#80FFD700</color>
+    <color name="black_transparent">#80000000</color>
+    
+    <!-- Default Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
