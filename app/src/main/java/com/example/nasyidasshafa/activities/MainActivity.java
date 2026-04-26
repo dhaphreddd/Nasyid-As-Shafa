@@ -68,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
             progressBar.setVisibility(View.GONE);
             if (list != null) {
                 adapter.updateNasyidList(list);
+                
+                // Menampilkan total nasyid di subtitle Toolbar
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setSubtitle("Total: " + list.size() + " Nasyid");
+                }
+
                 // POIN 3: Teks muncul jika list kosong
                 textEmptyState.setVisibility(list.isEmpty() ? View.VISIBLE : View.GONE);
             }

@@ -20,6 +20,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Nasyid(As-Shafa"
+rootProject.name = "NasyidAsShafa"
 include(":app")
  

@@ -19,10 +19,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         // Read Cloudinary credentials from local.properties
-        val localProperties = Properties()
-        val localPropertiesFile = rootProject.file("local.properties")
-        if (localPropertiesFile.exists()) {
-            localProperties.load(localPropertiesFile.inputStream())
+        val localProperties = Properties().apply {
+            val localPropertiesFile = rootProject.file("local.properties")
+            if (localPropertiesFile.exists()) {
+                localPropertiesFile.inputStream().use { load(it) }
+            }
         }
 
         // BuildConfig fields for Cloudinary
@@ -48,6 +49,13 @@ android {
         // Atur ke versi 1.8 agar konsisten dengan banyak library Android
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    packaging {
+        jniLibs {
+            // Memaksa library native untuk tidak dikompres agar bisa disejajarkan (alignment) dengan benar
+            useLegacyPackaging = true
+        }
     }
 }
 

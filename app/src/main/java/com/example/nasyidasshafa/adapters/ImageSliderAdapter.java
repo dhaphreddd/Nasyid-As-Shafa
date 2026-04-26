@@ -17,10 +17,16 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
 
     private final Context context;
     private final List<String> imageUrls;
+    private final OnZoomListener zoomListener;
 
-    public ImageSliderAdapter(Context context, List<String> imageUrls) {
+    public interface OnZoomListener {
+        void onZoomChanged(boolean isZoomed);
+    }
+
+    public ImageSliderAdapter(Context context, List<String> imageUrls, OnZoomListener zoomListener) {
         this.context = context;
         this.imageUrls = imageUrls;
+        this.zoomListener = zoomListener;
     }
 
     @NonNull
@@ -41,6 +47,29 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
         // Atur zoom maksimal agar lebih besar seperti galeri HP (default PhotoView hanya 3.0f)
         holder.photoView.setMaximumScale(8.0f);
         holder.photoView.setMediumScale(3.0f);
+
+
+        // Deteksi perubahan zoom
+        holder.photoView.setOnScaleChangeListener((scaleFactor, focusX, focusY) -> {
+            if (zoomListener != null) {
+                // Jika skala > 1.0 berarti sedang di-zoom
+                zoomListener.onZoomChanged(holder.photoView.getScale() > 1.0f);
+            }
+        });
+
+        // Deteksi perubahan zoom (lebih aman menggunakan Matrix)
+        holder.photoView.setOnMatrixChangeListener(rect -> {
+            if (zoomListener != null) {
+                float scale = holder.photoView.getScale();
+                // Jika sedang di-zoom (skala > 1.0), matikan swipe ViewPager
+                if (scale > 1.0f) {
+                    holder.photoView.getParent().requestDisallowInterceptTouchEvent(true);
+                    zoomListener.onZoomChanged(true);
+                } else {
+                    zoomListener.onZoomChanged(false);
+                }
+            }
+        });
     }
 
     @Override
